@@ -1,0 +1,137 @@
+<div class="container">
+
+    <div *ngIf="!toggle">
+        <div>
+                <p-button label="Add Work Order" (click)="addWorkOrder()"></p-button>
+                <p-button label="Add Sub Order" (click)="addSubkOrder()"></p-button>
+        </div>
+        <hr>
+        <p-dataTable [value]="cars" [rows]="10" [paginator]="true">
+                <p-header>List of Work Orders</p-header>
+            <p-column field="vin" header="Workorder ID" [filter]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="vin" header="Priority" [filter]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="year" header="Due Date" [filter]="true" [sortable]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="vin" header="Scheduled Date" [filter]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="vin" header="Exp. Date" [filter]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="color" header="Status">
+                    <ng-template let-col let-car="rowData" pTemplate="body">
+                            <p-progressBar [value]="80"></p-progressBar>
+                    </ng-template>
+                </p-column>
+        </p-dataTable>        
+    </div>
+
+    <div *ngIf="toggle">
+        <div [ngSwitch]="type">
+            <div *ngSwitchCase="order">
+                <span>New Work Order</span>
+                <hr>
+                <p-dropdown [options]="cities2" [(ngModel)]="selectedCity2" optionLabel="name"></p-dropdown>
+                <div class="ui-g ui-fluid">
+                    <div class="ui-g-12 ui-md-4">
+                        <span>Workorder ID</span>
+                        <input type="text" pInputText [(ngModel)]="workorderId" placeholder="Workorder ID"/>            
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span>Scheduled Time</span>
+                        <input type="text" pInputText [(ngModel)]="scheduledTime" placeholder="Scheduled Time"/>            
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span>Process ID</span>
+                        <input type="text" pInputText [(ngModel)]="processId" placeholder="Process ID"/>            
+                    </div>
+                </div>
+                <div class="ui-g ui-fluid">
+                    <div class="ui-g-12 ui-md-4">
+                        <span>Operation ID</span>
+                        <input type="text" pInputText [(ngModel)]="operationId" placeholder="Operation ID"/>            
+                    </div>
+                    <div class="ui-g-12 ui-md-8">
+                        <span>Operation Description</span>
+                        <textarea pInputTextarea [(ngModel)]="operationDesc" placeholder="Operation Description"></textarea>
+                    </div>
+                </div>
+                <div class="ui-g ui-fluid">
+                    <div class="ui-g-12 ui-md-12">
+                        <span>Status</span>
+                        <p-progressBar [value]="80"></p-progressBar>
+                    </div>
+                </div>
+                <div class="ui-g ui-fluid">
+                    <div class="ui-g-12 ui-md-4">
+                        <span>Schedule Count</span>
+                        <input type="text" pInputText [(ngModel)]="scheduleCount" placeholder="Schedule Count"/>            
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span>Complete Count</span>
+                        <input type="text" pInputText [(ngModel)]="completeCount" placeholder="Complete Count"/>            
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span>Remaining</span>
+                        <input type="text" pInputText [(ngModel)]="remaining" placeholder="Remaining"/>            
+                    </div>
+                </div>
+                <div class="ui-g ui-fluid">
+                    <div class="ui-g-12 ui-md-4">
+                        <span>Scheduled Time</span>
+                        <input type="text" pInputText [(ngModel)]="scheduleCount" placeholder="Scheduled Time"/>            
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span>Time Spent</span>
+                        <input type="text" pInputText [(ngModel)]="completeCount" placeholder="Time Spend"/>            
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span>ETC</span>
+                        <input type="text" pInputText [(ngModel)]="remaining" placeholder="ETC"/>            
+                    </div>
+                </div>
+                <div class="ui-g ui-fluid">
+                    <div class="ui-g-12 ui-md-12">
+                        <span>Operation Procedure</span>
+                        <textarea pInputTextarea [(ngModel)]="operationDesc" placeholder="Operation Description"></textarea>
+                    </div>
+                </div>
+                <hr>
+                <p-button label="Start Operation" ></p-button>
+                <p-button label="Complete Operation" ></p-button>
+                <p-button label="Time Taken" ></p-button>
+                <input type="text" pInputText [(ngModel)]="time" placeholder="Time"/>            
+                <p-button label="Report Operation Completion" ></p-button>            
+                <p-button label="Save" (click)="submit(order)"></p-button>
+                <hr>
+        </div>
+        <div *ngSwitchCase="subOrder">
+            <span>New Sub Order</span>
+            <hr>
+            <p-dropdown [options]="cities2" [(ngModel)]="selectedCity2" optionLabel="name"></p-dropdown>
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-4">
+                <span>Workorder ID</span>
+                <input type="text" pInputText [(ngModel)]="workorderId" placeholder="Workorder ID"/>            
+            </div>
+            <div class="ui-g-12 ui-md-4">
+                <span>Scheduled Time</span>
+                <input type="text" pInputText [(ngModel)]="scheduledTime" placeholder="Scheduled Time"/>            
+            </div>
+            <div class="ui-g-12 ui-md-4">
+                <span>Process ID</span>
+                <input type="text" pInputText [(ngModel)]="processId" placeholder="Process ID"/>            
+            </div>
+        </div>
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-4">
+                <span>Operation ID</span>
+                <input type="text" pInputText [(ngModel)]="operationId" placeholder="Operation ID"/>            
+            </div>
+            <div class="ui-g-12 ui-md-8">
+                <span>Operation Description</span>
+                <textarea pInputTextarea [(ngModel)]="operationDesc" placeholder="Operation Description"></textarea>
+            </div>
+        </div>
+        <hr>
+        <p-button label="Save" (click)="submit(subOrder)"></p-button>
+        <hr>
+        </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div >
+	<div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+          <p-card title="Machine Utilization" >
+              <p-chart type="doughnut" [data]="data"></p-chart>
+          </p-card>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+          <p-card title="Machine Work Status" >
+              <div>
+                  <span>Pending</span>
+                  <p-progressBar mode="indeterminate"></p-progressBar>
+                  <br>
+                  <span>Completed</span>
+                  <p-progressBar [value]="value"></p-progressBar>
+                  <br>
+                  <span>Downtime</span>
+                  <p-progressBar [value]="value"></p-progressBar>
+              </div>
+          </p-card>
+      </div>
+     </div>
+     <br>
+     <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <p-card title="Simple Card" >
+                <div>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
+                    quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>
+            </p-card>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <p-card title="Simple Card" >
+                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
+                    quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>
+            </p-card>
+        </div>
+     </div>     
+      
+	</div>
+</div>

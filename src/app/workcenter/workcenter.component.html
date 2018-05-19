@@ -1,0 +1,7 @@
+<div class="container">
+    Work Center
+    <p-dataTable [value]="cars" [rows]="10" [paginator]="true">
+            <p-header>List of Work Centers</p-header>
+        <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [filter]="true" filterPlaceholder="Search"></p-column>
+    </p-dataTable>
+</div>
