@@ -2,6 +2,7 @@ import express from 'express';
 import userRoutes from './user.route';
 import authRoutes from './auth.route';
 import postRoutes from './post.route';
+import workRoutes from './work.route';
 
 const router = express.Router(); // eslint-disable-line new-cap
 
@@ -17,6 +18,8 @@ router.use('/users', userRoutes);
 router.use('/auth', authRoutes);
 
 router.use('/posts', postRoutes);
+
+router.use('/work', workRoutes);
 
 router.get('/data', (req, res) => {
   res.json([{id: 1}]);

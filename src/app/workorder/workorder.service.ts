@@ -8,7 +8,11 @@ export class WorkOrderService {
         
       }
 
-    getData() {
-        return this.http.get('http://localhost:4040/api/data');
+    getWorkOrders() {
+        return this.http.get('http://localhost:4040/api/work');
+    }
+
+    addWorkOrder(workOrder: any) {
+        return this.http.post('http://localhost:4040/api/work', workOrder);
     }
 }

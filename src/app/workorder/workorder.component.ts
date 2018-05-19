@@ -16,12 +16,18 @@ export class WorkorderComponent {
     selectedCity2: City;
     cities2: City[];
     loading: boolean;
-    cars: Car[];
+    workOrders: Car[];
     cols: any[];
     toggle: boolean = false;
     type: string;
     order: string;
     subOrder: string;
+    scheduledTime: string;
+    workorderId: string;
+    processId: string;
+    operationId: string;
+    operationDesc: string;
+    status: string;
 
     constructor(private workOrderService: WorkOrderService) {
         this.order = ORDER;
@@ -35,35 +41,28 @@ export class WorkorderComponent {
             {name: 'M4', code: 'IST'},
             {name: 'M5', code: 'PRS'}
         ];
-        this.loading = true;
-        const res = {
-            "data": [
-                {"brand": "VW", "year": 2012, "color": "Orange", "vin": "dsad231ff"},
-                {"brand": "Audi", "year": 2011, "color": "Black", "vin": "gwregre345"},
-                {"brand": "Renault", "year": 2005, "color": "Gray", "vin": "h354htr"},
-                {"brand": "BMW", "year": 2003, "color": "Blue", "vin": "j6w54qgh"},
-                {"brand": "Mercedes", "year": 1995, "color": "Orange", "vin": "hrtwy34"},
-                {"brand": "Volvo", "year": 2005, "color": "Black", "vin": "jejtyj"},
-                {"brand": "Honda", "year": 2012, "color": "Yellow", "vin": "g43gr"},
-                {"brand": "Jaguar", "year": 2013, "color": "Orange", "vin": "greg34"},
-                {"brand": "Ford", "year": 2000, "color": "Black", "vin": "h54hw5"},
-                {"brand": "Fiat", "year": 2013, "color": "Red", "vin": "245t2s"}
-            ]
-        };        
-        this.cars = res.data;
         this.cols = [
-            {field: 'vin', header: 'Workorder ID'},
-            {field: 'year', header: 'Priority'},
-            {field: 'brand', header: 'Due Date'},
-            {field: 'color', header: 'Scheduled Date'},
-            {field: 'color', header: 'Exp Date'},
-            {field: 'color', header: 'Status'}
+            {field: 'workId', header: 'Workorder ID'},
+            {field: 'priority', header: 'Priority'},
+            {field: 'dueDate', header: 'Due Date'},
+            {field: 'shceduledTime', header: 'Scheduled Date'},
+            {field: 'expDate', header: 'Exp Date'},
+            {field: 'satus', header: 'Status'}
         ];
-        this.workOrderService.getData()
+        this.getWorkOrders();
+    }
+
+    getWorkOrders() {
+        this.loading = true;
+        this.workOrders = [];
+        // GET work order list here
+        this.workOrderService.getWorkOrders()
         .subscribe((res) => {
-            console.log(res.json());    
+            this.loading =false;
+            this.workOrders = res.json();
         });
     }
+
     addWorkOrder() {
         this.type = ORDER;
         this.toggle = true;
@@ -76,10 +75,25 @@ export class WorkorderComponent {
 
     submit(type: string) {
         if(type === this.order) {
-            console.log(this.selectedCity2);
+            const workOrder = {
+                workId: this.workorderId,
+                scheduledTime: this.scheduledTime,
+                processId: this.processId,
+                operationId: this.processId,
+                operationDesc: this.operationDesc
+            };
+            
+            this.workOrderService.addWorkOrder(workOrder).subscribe((workOrder: any) => {
+                this.getWorkOrders();
+            });
+
         } else {
             console.log(this.selectedCity2);
         }
+        this.toggle = false;
+    }
+
+    cancel() {
         this.toggle = false;
     }
 }
