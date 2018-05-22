@@ -57,6 +57,8 @@ import { ScheduleComponent } from './schedule';
 import { WorkorderComponent } from './workorder/workorder.component';
 import { WorkcenterComponent } from './workcenter/workcenter.component';
 import { WorkOrderService } from './workorder/workorder.service';
+import { MachineComponent } from './machine';
+import { MachineService } from './machine/machine.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -84,6 +86,7 @@ type StoreType = {
     ScheduleComponent,
     WorkorderComponent,
     WorkcenterComponent,
+    MachineComponent,
     NoContentComponent
   ],
   /**
@@ -122,7 +125,8 @@ type StoreType = {
   providers: [
     ENV_PROVIDERS,
     APP_PROVIDERS,
-    WorkOrderService
+    WorkOrderService,
+    MachineService
   ]
 })
 export class AppModule {

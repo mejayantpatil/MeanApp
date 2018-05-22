@@ -8,11 +8,18 @@ export default {
       mobileNumber: Joi.string().regex(/^[1-9][0-9]{9}$/).required()
     }
   },
-  // POST /api/users
+  // POST /api/work
   createWork: {
     body: {
       workId: Joi.string().required(),
       scheduledTime: Joi.string().required()
+    }
+  },
+  // POST /api/machine
+  createMachine: {
+    body: {
+      machineId: Joi.string().required(),
+      name: Joi.string().required()
     }
   },
   // POST /api/posts

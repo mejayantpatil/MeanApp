@@ -25,6 +25,7 @@ import { PostsService } from './posts/posts.service';
         <a class="links" [routerLink]="['/']">Home</a>
         <a class="links" [routerLink]="['/workorder']">Work Order</a>
         <a class="links" [routerLink]="['/workcenter']">Work Center</a>
+        <a class="links" [routerLink]="['/machine']">Machine</a>
         <a class="links" [routerLink]="['/schedule']">Schedule</a>        
         <a class="links" [routerLink]="['/settings']">Settings</a>
         <a class="links user" [routerLink]="['/']">User</a>        

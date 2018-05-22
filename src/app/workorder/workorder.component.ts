@@ -80,7 +80,8 @@ export class WorkorderComponent {
                 scheduledTime: this.scheduledTime,
                 processId: this.processId,
                 operationId: this.processId,
-                operationDesc: this.operationDesc
+                operationDesc: this.operationDesc,
+                status: this.status
             };
             
             this.workOrderService.addWorkOrder(workOrder).subscribe((workOrder: any) => {

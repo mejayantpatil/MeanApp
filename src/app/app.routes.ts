@@ -10,6 +10,7 @@ import { SettingsComponent } from './settings';
 import { ScheduleComponent } from './schedule';
 import { WorkorderComponent } from './workorder/workorder.component';
 import { WorkcenterComponent } from './workcenter/workcenter.component';
+import { MachineComponent } from './machine';
 
 export const ROUTES: Routes = [
   { path: '',      component: HomeComponent },
@@ -20,5 +21,6 @@ export const ROUTES: Routes = [
   { path: 'workorder', component: WorkorderComponent },
   { path: 'workcenter', component: WorkcenterComponent },
   { path: 'schedule', component: ScheduleComponent },
+  { path: 'machine', component: MachineComponent },
   { path: '**',    component: NoContentComponent },
 ];

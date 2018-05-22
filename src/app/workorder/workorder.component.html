@@ -56,9 +56,13 @@
                     </div>
                 </div>
                 <div class="ui-g ui-fluid">
-                    <div class="ui-g-12 ui-md-12">
+                    <div class="ui-g-12 ui-md-4">
                         <span>Status</span>
-                        <p-progressBar [value]="80"></p-progressBar>
+                        <input type='text' pInputText [(ngModel)]="status" placeholder="Status">
+                    </div>
+                    <div class="ui-g-12 ui-md-8" *ngIf="status">
+                        <span>Status</span>
+                        <p-progressBar [value]="status"></p-progressBar>
                     </div>
                 </div>
                 <div class="ui-g ui-fluid">

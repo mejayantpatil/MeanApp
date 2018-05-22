@@ -1,0 +1,38 @@
+<div class="container">
+    Machine
+    <div *ngIf="!toggle">
+        <div>
+            <p-button label="Add Machine" (click)="addMachine()"></p-button>
+        </div>
+        <hr>
+        <p-dataTable [value]="machines" [rows]="10" [paginator]="true" [loading]="loading" loadingIcon="fa-spinner">
+            <p-header>List of Machines</p-header>
+            <p-column field="machineId" header="Machine ID" [filter]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="name" header="Number" [filter]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="desc" header="Description" [filter]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="createdAt" header="Start Date" [filter]="true" filterPlaceholder="Search">
+                    <ng-template let-col let-machine="rowData" pTemplate="body">
+                            {{machine.createdAt|date: 'dd/MM/yyyy' }}
+                        </ng-template>
+            </p-column>
+            <p-column field="status" header="Satus" [filter]="true" filterPlaceholder="Search"></p-column>
+        </p-dataTable>
+    </div>
+    <div *ngIf="toggle">
+        <span>New Machine</span>
+        <hr>
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-4">
+                <span>Machine Number</span>
+                <input type="text" pInputText [(ngModel)]="machine.machineId" placeholder="Machine No."/>            
+            </div>
+            <div class="ui-g-12 ui-md-4">
+                <span>Machine Name</span>
+                <input type="text" pInputText [(ngModel)]="machine.name" placeholder="Machine Name"/>            
+            </div>
+        </div>
+        <hr>
+        <p-button label="Save" (click)="save()"></p-button>
+        <p-button label="Cancel" (click)="cancel()"></p-button>
+    </div>    
+</div>
