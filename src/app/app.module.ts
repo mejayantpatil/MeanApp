@@ -51,7 +51,9 @@ import {ButtonModule, CardModule, ChartModule, ProgressBarModule,
   InputTextModule,
   CheckboxModule,
   RadioButtonModule,
-  InputTextareaModule} from 'primeng/primeng';
+  InputTextareaModule,
+  SidebarModule,
+  ProgressSpinnerModule} from 'primeng/primeng';
 import { SettingsComponent } from './settings';
 import { ScheduleComponent } from './schedule';
 import { WorkorderComponent } from './workorder/workorder.component';
@@ -59,6 +61,10 @@ import { WorkcenterComponent } from './workcenter/workcenter.component';
 import { WorkOrderService } from './workorder/workorder.service';
 import { MachineComponent } from './machine';
 import { MachineService } from './machine/machine.service';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/login.service';
+import { AuthGuardService } from './auth/authGuard.service';
+import { AuthenticationService } from './auth/authentication.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -87,6 +93,7 @@ type StoreType = {
     WorkorderComponent,
     WorkcenterComponent,
     MachineComponent,
+    LoginComponent,
     NoContentComponent
   ],
   /**
@@ -109,8 +116,10 @@ type StoreType = {
     InputTextareaModule,
     ProgressBarModule,
     DataTableModule,
+    SidebarModule,
     FormsModule,
     ReactiveFormsModule,
+    ProgressSpinnerModule,
     HttpModule,
     MatToolbarModule,
     MatCardModule,
@@ -126,7 +135,10 @@ type StoreType = {
     ENV_PROVIDERS,
     APP_PROVIDERS,
     WorkOrderService,
-    MachineService
+    MachineService,
+    LoginService,
+    AuthGuardService,
+    AuthenticationService
   ]
 })
 export class AppModule {

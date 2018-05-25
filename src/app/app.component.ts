@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { AppState } from './app.service';
 import { PostsService } from './posts/posts.service';
+import { AuthenticationService } from './auth/authentication.service';
 /**
  * App Component
  * Top Level Component
@@ -21,16 +22,22 @@ import { PostsService } from './posts/posts.service';
   template: `
     <header>
       <mat-toolbar color="primary">
+        <a class="links" *ngIf="auth.isLoggedIn()" (click)="display = true">
+          <i class="fa fa-bars" ></i>
+        </a>
         <a [routerLink]="['/']" class="logotTxt">Company Name</a>
-        <a class="links" [routerLink]="['/']">Home</a>
-        <a class="links" [routerLink]="['/workorder']">Work Order</a>
-        <a class="links" [routerLink]="['/workcenter']">Work Center</a>
-        <a class="links" [routerLink]="['/machine']">Machine</a>
-        <a class="links" [routerLink]="['/schedule']">Schedule</a>        
-        <a class="links" [routerLink]="['/settings']">Settings</a>
-        <a class="links user" [routerLink]="['/']">User</a>        
+        <a class="links" *ngIf="auth.isLoggedIn()" [routerLink]="['/']">Home</a>
+        <a class="links" *ngIf="auth.isLoggedIn()" [routerLink]="['/workorder']">Work Order</a>
+        <a class="links" *ngIf="auth.isLoggedIn()" [routerLink]="['/workcenter']">Work Center</a>
+        <a class="links" *ngIf="auth.isLoggedIn()" [routerLink]="['/machine']">Machine</a>
+        <a class="links" *ngIf="auth.isLoggedIn()" [routerLink]="['/schedule']">Schedule</a>        
+        <a class="links" *ngIf="auth.isLoggedIn()" [routerLink]="['/settings']">Settings</a>
+        <a class="links user" *ngIf="auth.isLoggedIn()" (click)="logout()">Logout</a>        
       </mat-toolbar>
     </header>
+    <p-sidebar [(visible)]="display">
+      Content
+    </p-sidebar>
     <router-outlet></router-outlet>
     <footer>
     </footer>
@@ -41,13 +48,18 @@ export class AppComponent implements OnInit {
   public angularclassLogo = 'assets/img/angularclass-avatar.png';
   public name = 'Mean stack starter';
   public url = 'https://mean.io';
-
+  display: boolean = false;
   constructor(
-    public appState: AppState
+    public appState: AppState,
+    private auth: AuthenticationService
   ) { }
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
 }

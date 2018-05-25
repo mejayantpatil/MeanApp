@@ -1,0 +1,26 @@
+<div class="container">
+    <div>
+        <h3>Sign In</h3>
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-4">
+                <hr>
+                <span>Username</span>
+                <input type="text" pInputText [(ngModel)]="user.username" placeholder="Username"/>            
+            </div>
+        </div>
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-4">
+                <span>Password</span>
+                <input type="password" pInputText [(ngModel)]="user.password" placeholder="Password"/>            
+                <hr>
+            </div>
+        </div>
+        <div class="ui-g ui-fluid error" *ngIf="err">
+            <div class="ui-g-12 ui-md-4">
+                {{err}}
+            </div>
+        </div>
+        <p-button label="Login" (click)="authUser()"></p-button>
+        <!-- <p-progressSpinner></p-progressSpinner> -->
+    </div>
+</div>

@@ -11,10 +11,13 @@ import { ScheduleComponent } from './schedule';
 import { WorkorderComponent } from './workorder/workorder.component';
 import { WorkcenterComponent } from './workcenter/workcenter.component';
 import { MachineComponent } from './machine';
+import { LoginComponent } from './login/login.component';
+import { AuthGuardService } from './auth/authGuard.service';
 
 export const ROUTES: Routes = [
-  { path: '',      component: HomeComponent },
+  { path: '',      component: HomeComponent, canActivate: [AuthGuardService]},
   { path: 'posts', loadChildren: './posts#PostsModule' },
+  { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'react', component: ReactComponent },
   { path: 'settings', component: SettingsComponent },

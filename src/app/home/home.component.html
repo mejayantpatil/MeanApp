@@ -10,10 +10,11 @@
           <p-card title="Machine Work Status" >
               <div>
                   <span>Pending</span>
-                  <p-progressBar mode="indeterminate"></p-progressBar>
+                  <!-- <p-progressBar mode="indeterminate"></p-progressBar> -->
+                  <p-progressBar [value]="20"></p-progressBar>
                   <br>
                   <span>Completed</span>
-                  <p-progressBar [value]="value"></p-progressBar>
+                  <p-progressBar [value]="70"></p-progressBar>
                   <br>
                   <span>Downtime</span>
                   <p-progressBar [value]="value"></p-progressBar>
