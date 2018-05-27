@@ -13,6 +13,7 @@ import { WorkcenterComponent } from './workcenter/workcenter.component';
 import { MachineComponent } from './machine';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './auth/authGuard.service';
+import { PlantComponent } from './plant';
 
 export const ROUTES: Routes = [
   { path: '',      component: HomeComponent, canActivate: [AuthGuardService]},
@@ -25,5 +26,6 @@ export const ROUTES: Routes = [
   { path: 'workcenter', component: WorkcenterComponent },
   { path: 'schedule', component: ScheduleComponent },
   { path: 'machine', component: MachineComponent },
+  { path: 'plant', component: PlantComponent },
   { path: '**',    component: NoContentComponent },
 ];

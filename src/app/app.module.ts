@@ -53,7 +53,9 @@ import {ButtonModule, CardModule, ChartModule, ProgressBarModule,
   RadioButtonModule,
   InputTextareaModule,
   SidebarModule,
-  ProgressSpinnerModule} from 'primeng/primeng';
+  ProgressSpinnerModule,
+  ConfirmDialogModule,
+  ConfirmationService} from 'primeng/primeng';
 import { SettingsComponent } from './settings';
 import { ScheduleComponent } from './schedule';
 import { WorkorderComponent } from './workorder/workorder.component';
@@ -65,6 +67,8 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { AuthGuardService } from './auth/authGuard.service';
 import { AuthenticationService } from './auth/authentication.service';
+import { PlantService } from './plant/plant.service';
+import { PlantComponent } from './plant';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -94,6 +98,7 @@ type StoreType = {
     WorkcenterComponent,
     MachineComponent,
     LoginComponent,
+    PlantComponent,
     NoContentComponent
   ],
   /**
@@ -108,6 +113,7 @@ type StoreType = {
     AutoCompleteModule,
     ScheduleModule,
     DialogModule,
+    ConfirmDialogModule,
     CalendarModule,
     DropdownModule,
     InputTextModule,
@@ -138,7 +144,9 @@ type StoreType = {
     MachineService,
     LoginService,
     AuthGuardService,
-    AuthenticationService
+    AuthenticationService,
+    PlantService,
+    ConfirmationService
   ]
 })
 export class AppModule {

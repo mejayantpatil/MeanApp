@@ -36,7 +36,12 @@ import { AuthenticationService } from './auth/authentication.service';
       </mat-toolbar>
     </header>
     <p-sidebar [(visible)]="display">
-      Content
+      <a class="links" *ngIf="auth.isLoggedIn()" [routerLink]="['/workorder']" (click)="display = false">Work Order</a><br>
+      <a class="links" *ngIf="auth.isLoggedIn()" [routerLink]="['/plant']" (click)="display = false">Plant</a><br>
+      <a class="links" *ngIf="auth.isLoggedIn()" [routerLink]="['/workcenter']" (click)="display = false">Work Center</a><br>
+      <a class="links" *ngIf="auth.isLoggedIn()" [routerLink]="['/machine']" (click)="display = false">Machine</a><br>
+      <a class="links" *ngIf="auth.isLoggedIn()" [routerLink]="['/schedule']" (click)="display = false">Schedule</a>  <br>      
+      <a class="links" *ngIf="auth.isLoggedIn()" [routerLink]="['/settings']" (click)="display = false">Settings</a><br>
     </p-sidebar>
     <router-outlet></router-outlet>
     <footer>

@@ -1,0 +1,67 @@
+<div class="container">
+    <div *ngIf="!toggle">
+        <div>
+            <p-button label="Add Plant" (click)="addPlant()"></p-button>
+        </div>
+        <hr>
+        <p-dataTable [value]="plants" [rows]="10" [paginator]="true" [loading]="loading" 
+        loadingIcon="fa-spinner" selectionMode="single" [(selection)]="selectedPlant">
+            <p-header>List of Plants</p-header>
+            <p-column field="name" header="Name" [filter]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="address" header="Address" [filter]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="city" header="City" [filter]="true" [sortable]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="state" header="State" [filter]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="country" header="Country" [filter]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="pincode" header="Pincode" [filter]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="" header="" [style]="{'width':'55px'}">
+                <ng-template let-col let-plant="rowData" pTemplate="body">
+                <a class="links" (click)="editPlant(plant)">
+                    <i class="fa fa-edit" ></i>
+                </a>
+                <a class="links" (click)="deletePlant(plant)">
+                    <i class="fa fa-trash" ></i>
+                </a>
+                </ng-template>
+            </p-column>
+        </p-dataTable>        
+    </div>
+    <p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="500"></p-confirmDialog>
+    <div *ngIf="toggle">
+        <div [ngSwitch]="type">
+            <div>
+                <span>Plant</span>
+                <hr>
+                <div class="ui-g ui-fluid">
+                    <div class="ui-g-12 ui-md-4">
+                        <span>Name</span>
+                        <input type="text" pInputText [(ngModel)]="plant.name" placeholder="Plant Name"/>            
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span>Address</span>
+                        <textarea pInputTextarea [(ngModel)]="plant.address" placeholder="Address"></textarea>            
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span>City</span>
+                        <input type="text" pInputText [(ngModel)]="plant.city" placeholder="City"/>            
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span>State</span>
+                        <input type="text" pInputText [(ngModel)]="plant.state" placeholder="State"/>            
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span>Country</span>
+                        <input type="text" pInputText [(ngModel)]="plant.country" placeholder="Country"/>            
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span>Pincode</span>
+                        <input type="number" pInputText [(ngModel)]="plant.pincode" placeholder="Pincode"/>            
+                    </div>
+                </div>
+                <!-- <p-dropdown [options]="cities2" [(ngModel)]="selectedCity2" optionLabel="name"></p-dropdown> -->
+                <p-button label="Save" (click)="submit(plant)"></p-button>
+                <p-button label="Cancel" (click)="cancel()"></p-button>
+                <hr>
+        </div>
+        </div>
+    </div>
+</div>
