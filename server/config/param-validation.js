@@ -95,6 +95,55 @@ export default {
     }
   },
 
+  // POST /api/process
+  createProcess: {
+    body: {
+      name: Joi.string().required(),
+      revision: Joi.string().required(),
+      rolledUpTime: Joi.number().required()
+    }
+  },
+
+  // POST /api/operation
+  createOperation: {
+    body: {
+      name : Joi.string().required(),
+      revision : Joi.string().required(),
+      type : Joi.string().required(),
+      releaseStatus :Joi.string().required(),
+      estimatedTime : Joi.number().required(),
+      previousOperationId : Joi.string().hex().required(),
+      nextOperationId : Joi.string().hex().required(),
+      quantityProduced :Joi.number().required(),
+      machine : Joi.string().hex().required(),
+      tool : Joi.string().hex().required(),
+      comment : Joi.string().required()  
+    }
+  },
+
+  // POST /api/part
+  createPart: {
+    body: {
+      customerPartId: Joi.number().required(),
+      name: Joi.string().required(),
+      revision: Joi.number().required() ,
+      processId: Joi.string().required(),
+      subworkorder: Joi.string().required()
+    }
+  },
+
+  // POST /api/subworkorder
+  createSubworkorder: {
+    body: {
+      subworkorderName : Joi.string().required(),
+      scheduledStart : Joi.string().required(),
+      scheduledEnd :Joi.string().required(),
+      estimatedEfforts :Joi.number().required(),
+      scrapCost: Joi.number().required(),
+      part : Joi.string().required()  
+    }
+  },
+
   // UPDATE /api/users/:userId
   updateUser: {
     body: {
@@ -209,6 +258,65 @@ updateCustomer: {
       postId: Joi.string().hex().required()
     }
   },
+
+  // POST /api/process/:processId
+  updateProcess: {
+    body: {
+      name: Joi.string().required(),
+      revision: Joi.string().required(),
+      rolledUpTime: Joi.number().required()
+    },
+    params: {
+      processId: Joi.string().required()
+    }
+  },
+
+  // POST /api/operation/:operaionId
+  updateOperation: {
+    body: {
+      name : Joi.string().required(),
+      revision : Joi.string().required(),
+      type : Joi.string().required(),
+      releaseStatus :Joi.string().required(),
+      estimatedTime : Joi.number().required(),
+      previousOperationId : Joi.string().hex().required(),
+      nextOperationId : Joi.string().hex().required(),
+      quantityProduced :Joi.number().required(),
+      machine : Joi.string().hex().required(),
+      tool : Joi.string().hex().required(),
+      comment : Joi.string().required()
+    },
+    params: {
+      operationId: Joi.string().required()
+    }
+  },
+
+  // POST /api/part/:partId
+  updatePart: {
+    body: {
+      customerPartId: Joi.number().required(),
+      name: Joi.string().required(),
+      revision: Joi.number().required() ,
+      processId: Joi.string().required(),
+      subworkorder: Joi.string().required()
+    }
+  },
+
+  // POST /api/subworkorder/:subworkorderId
+  updateSubworkorder: {
+    body: {
+      subworkorderName : Joi.string().required(),
+      scheduledStart : Joi.string().required(),
+      scheduledEnd :Joi.string().required(),
+      estimatedEfforts :Joi.number().required(),
+      scrapCost: Joi.number().required(),
+      part : Joi.string().required()  
+    },
+    params: {
+      subworkorderId: Joi.string().required()
+    }
+  },
+
 
   // POST /api/auth/login
   login: {

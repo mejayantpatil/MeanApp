@@ -1,29 +1,29 @@
 import express from 'express';
 import validate from 'express-validation';
 import paramValidation from '../config/param-validation';
-import workCtrl from '../controllers/work.controller';
+import subworkorderCtrl from '../controllers/subworkorder.controller';
 
 
 const router = express.Router(); // eslint-disable-line new-cap
 
 router.route('/')
   /** GET /api/users - Get list of users */
-  .get(workCtrl.list)
+  .get(subworkorderCtrl.list)
 
   /** POST /api/users - Create new user */
-  .post(validate(paramValidation.createWork), workCtrl.create);
+  .post(validate(paramValidation.createPart), subworkorderCtrl.create);
 
-router.route('/:workId')
+router.route('/:subworkorderId')
   /** GET /api/users/:userId - Get user */
-  .get(workCtrl.get)
+  .get(subworkorderCtrl.get)
 
   /** PUT /api/users/:userId - Update user */
-  .put(validate(paramValidation.updateUser), workCtrl.update)
+  .put(validate(paramValidation.updatePart), subworkorderCtrl.update)
 
   /** DELETE /api/users/:userId - Delete user */
-  .delete(workCtrl.remove);
+  .delete(subworkorderCtrl.remove);
 
 /** Load user when API with userId route parameter is hit */
-router.param('workId', workCtrl.load);
+router.param('subworkorderId', subworkorderCtrl.load);
 
 export default router;

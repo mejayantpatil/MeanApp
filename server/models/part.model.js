@@ -13,7 +13,7 @@ const PartSchema = new mongoose.Schema({
     revision :{type: Number, required: true} ,
     partType : {type: String, required: true, enum: ['Assembly', 'Manufacture'], default: 'Manufacture'},
     processId :{type :Schema.ObjectId, ref :'Process'},
-    subworkorder :{tags : Schema.ObjectId, ref :"Subworkorder"}
+    subworkorder :{type : Schema.ObjectId, ref :"Subworkorder"}
 });
 
 /**

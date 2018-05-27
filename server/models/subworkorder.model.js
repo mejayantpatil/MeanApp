@@ -18,7 +18,7 @@ const SubworkorderSchema = new mongoose.Schema({
     actualEfforts:{type : Number, require: false},
     reasonsForDelay :[{type : String, require: false}],
     scrapCost: {type : Number, require: true},
-    part : {type: Schema.Objectid, ref: 'Part'}
+    part : {type: Schema.ObjectId, ref: 'Part'}
 });
 
 /**

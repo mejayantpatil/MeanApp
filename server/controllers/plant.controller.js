@@ -73,8 +73,8 @@ function list(req, res, next) {
  * @returns {Plant}
  */
 function remove(req, res, next) {
-  const Plant = req.Plant;
-  Plant.remove()
+  const plant = req.plant;
+  plant.remove()
     .then(deletedWork => res.json(deletedWork))
     .catch(e => next(e));
 }
