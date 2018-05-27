@@ -1,29 +1,29 @@
 import express from 'express';
 import validate from 'express-validation';
 import paramValidation from '../config/param-validation';
-import machineCtrl from '../controllers/machine.controller';
+import departmentCtrl from '../controllers/department.controller';
 
 
 const router = express.Router(); // eslint-disable-line new-cap
 
 router.route('/')
   /** GET /api/users - Get list of users */
-  .get(machineCtrl.list)
+  .get(departmentCtrl.list)
 
   /** POST /api/users - Create new user */
-  .post(validate(paramValidation.createMachine), machineCtrl.create);
+  .post(validate(paramValidation.createDepartment), departmentCtrl.create);
 
-router.route('/:machineId')
+router.route('/:departmentId')
   /** GET /api/users/:userId - Get user */
-  .get(machineCtrl.get)
+  .get(departmentCtrl.get)
 
   /** PUT /api/users/:userId - Update user */
-  .put(validate(paramValidation.updateMachine), machineCtrl.update)
+  .put(validate(paramValidation.updateDepartment), departmentCtrl.update)
 
   /** DELETE /api/users/:userId - Delete user */
-  .delete(machineCtrl.remove);
+  .delete(departmentCtrl.remove);
 
 /** Load user when API with userId route parameter is hit */
-router.param('machineId', machineCtrl.load);
+router.param('departmentId', departmentCtrl.load);
 
 export default router;

@@ -6,27 +6,21 @@ import APIError from '../helpers/APIError';
 /**
  * Machine Schema
  */
+var Schema = mongoose.Schema;
 const MachineSchema = new mongoose.Schema({
-  machineId: {
-    type: String,
-    required: true
-  },
-  name: {
-    type: String,
-    required: true    
-  },
-  desc: {
-    type: String,
-    default: ''
-  },
-  status: {
-    type: String,
-    default: '0'
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  }  
+  instanceId: {type: String, required: true, default: "00"},
+  name: {type: String, required: true},
+	machineType: {type: String, required: true, enum: ['SPM', 'Maintenance', 'CNC', 'PLC'], default: 'Maintenance'},
+	axis: {type: Number, required: true, enum: [2, 2.5, 3, 5], default: 2},
+	plant: {type: Schema.ObjectId, ref: 'Plant', required: false},
+	department :{type: Schema.ObjectId, ref: 'Department', required: true},
+	hourlycost: {type: Number, required: false},
+	make: {type: String, required: false},
+	model: {type: String, required: false},
+	srnumber: {type: String, required: true},
+	jobsizeLength: {type: Number, required: true},
+	jobsizeWidth: {type: Number, required: true},
+	jobsizeHeight: {type: Number, required: true}  
 });
 
 /**

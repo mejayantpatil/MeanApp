@@ -27,12 +27,7 @@ function get(req, res) {
  * @returns {Machine}
  */
 function create(req, res, next) {
-  const machine = new Machine({
-    machineId: req.body.machineId,
-    name: req.body.name,
-    desc: req.body.desc,
-    status: req.body.status
-  });
+  const machine = new Machine(req.body);
 
   machine.save()
     .then(savedMachine => res.json(savedMachine))
@@ -47,10 +42,20 @@ function create(req, res, next) {
  */
 function update(req, res, next) {
   const machine = req.machine;
-  machine.machineId = req.body.machineId;
+
+  machine.instanceId = req.body.instanceId;
   machine.name = req.body.name;
-  machine.desc =req.body.desc;
-  machine.status = req.body.status;
+	// machineType: {type: String, required: true, enum: ['SPM', 'Maintenance', 'CNC', 'PLC'], default: 'Maintenance'},
+	// axis: {type: Number, required: true, enum: [2, 2.5, 3, 5], default: 2},
+  machine.plant = req.body.plant;
+  machine.department = req.body.department;
+  machine.hourlycost = req.body.hourlycost;
+  machine.make = req.body.make;
+  machine.model = req.body.model;
+  machine.srnumber = req.body.srnumber;
+	machine.jobsizeLength = req.body.jobsizeLength;
+	machine.jobsizeWidth = req.body.jobsizeWidth;
+	machine.jobsizeHeight = req.body.jobsizeHeight;
   machine.save()
     .then(savedMachine => res.json(savedMachine))
     .catch(e => next(e));

@@ -1,29 +1,29 @@
 import express from 'express';
 import validate from 'express-validation';
 import paramValidation from '../config/param-validation';
-import machineCtrl from '../controllers/machine.controller';
+import plantCtrl from '../controllers/plant.controller';
 
 
 const router = express.Router(); // eslint-disable-line new-cap
 
 router.route('/')
   /** GET /api/users - Get list of users */
-  .get(machineCtrl.list)
+  .get(plantCtrl.list)
 
   /** POST /api/users - Create new user */
-  .post(validate(paramValidation.createMachine), machineCtrl.create);
+  .post(validate(paramValidation.createPlant), plantCtrl.create);
 
-router.route('/:machineId')
+router.route('/:plantId')
   /** GET /api/users/:userId - Get user */
-  .get(machineCtrl.get)
+  .get(plantCtrl.get)
 
   /** PUT /api/users/:userId - Update user */
-  .put(validate(paramValidation.updateMachine), machineCtrl.update)
+  .put(validate(paramValidation.updatePlant), plantCtrl.update)
 
   /** DELETE /api/users/:userId - Delete user */
-  .delete(machineCtrl.remove);
+  .delete(plantCtrl.remove);
 
 /** Load user when API with userId route parameter is hit */
-router.param('machineId', machineCtrl.load);
+router.param('plantId', plantCtrl.load);
 
 export default router;

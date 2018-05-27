@@ -4,6 +4,11 @@ import authRoutes from './auth.route';
 import postRoutes from './post.route';
 import workRoutes from './work.route';
 import machineRoutes from './machine.route';
+import plantRoutes from './plant.route';
+import departmentRoutes from './department.route';
+import toolRoutes from './tool.route';
+import customerRoutes from './coustomer.route';
+import workorderRoutes from './workorder.route';
 
 const router = express.Router(); // eslint-disable-line new-cap
 
@@ -20,11 +25,16 @@ router.use('/auth', authRoutes);
 
 router.use('/posts', postRoutes);
 
-router.use('/work', workRoutes);
+router.use('/workorders', workorderRoutes);
 
-router.use('/machine', machineRoutes);
+router.use('/machines', machineRoutes);
 
-router.get('/data', (req, res) => {
-  res.json([{id: 1}]);
-});
+router.use('/plants', plantRoutes);
+
+router.use('/departments', departmentRoutes);
+
+router.use('/tools', toolRoutes);
+
+router.use('/customers', customerRoutes);
+
 export default router;
